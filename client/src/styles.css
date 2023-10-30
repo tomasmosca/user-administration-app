@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Success Snackbar */
+.success-snackbar .mdc-snackbar__surface {
+  background-color: #4BB543 !important;
+}
+
+.success-snackbar .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+  color: white !important;
+}
+
+.success-snackbar .mdc-snackbar__label {
+  color: white !important;
+}
+
+/* Error Snackbar */
+.error-snackbar .mdc-snackbar__surface {
+  background-color: #D32F2F !important;
+}
+
+.error-snackbar .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+  color: white !important;
+}
+
+.error-snackbar .mdc-snackbar__label {
+  color: white !important;
+}
+
+table {
+  width: 100%;
+}
+
+.table-container {
+  padding: 30px 70px 70px;
+}
+
+.table-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+@media (max-width: 1000px) {
+  .table-button {
+    margin-left: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.table-container .mat-column-actions {
+  width: auto;
+  max-width: 300px;
+}
+
+.form-inputs-user {
+  margin: 15px;
+}
+

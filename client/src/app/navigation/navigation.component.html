@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span class="site-title">
+    <mat-icon style="margin-right: 8px">person</mat-icon>
+    User Administration System
+  </span>
+  <span class="spacer"></span>
+  <a *ngIf="(authService.authData$ | async)?.isAuthenticated === false" routerLink="/login" class="nav-link" routerLinkActive="active-link">Log in</a>
+  <a routerLink="/register" class="nav-link" routerLinkActive="active-link">Register</a>
+  <a routerLink="/public" class="nav-link" routerLinkActive="active-link">Public</a>
+  <a *ngIf="(authService.authData$ | async)?.role === 'ROLE_Admin'" routerLink="/admin" class="nav-link" routerLinkActive="active-link">Dashboard</a>
+  <a *ngIf="(authService.authData$ | async)?.role === 'ROLE_User'" routerLink="/profile" class="nav-link" routerLinkActive="active-link">Profile</a>
+  <button *ngIf="(authService.authData$ | async)?.isAuthenticated" mat-icon-button class="example-icon login-icon" style="margin-left: 5px" aria-label="Button to log out." (click)="onLogoutClick()">
+    <mat-icon>login</mat-icon>
+  </button>
+</mat-toolbar>
+

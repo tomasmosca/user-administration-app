@@ -1,0 +1,60 @@
+<h1 mat-dialog-title>{{ data.isModify ? 'Modify User' : 'Add User' }}</h1>
+<form [formGroup]="userForm" (submit)="onSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field hintLabel="Min 5 characters" class="form-inputs-user">
+      <mat-label>Enter username</mat-label>
+      <input formControlName="login" matInput #input minlength="5" placeholder="Ex. mike4523" required>
+      <mat-hint align="end">{{input.value.length}}/5</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-inputs-user">
+      <mat-label>Enter email</mat-label>
+      <input formControlName="email" matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-inputs-user" style="width: 212px">
+      <mat-label>Enter password</mat-label>
+      <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required>
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="form-inputs-user" hintLabel="Min 5 characters">
+      <mat-label>Enter ID</mat-label>
+      <input formControlName="identification" matInput #input2 minlength="5" placeholder="ID" required>
+      <mat-hint align="end">{{input2.value.length}}/5</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-inputs-user" hintLabel="Min 5 characters">
+      <mat-label>Enter name</mat-label>
+      <input formControlName="name" matInput #input3 minlength="5" placeholder="Name" required>
+      <mat-hint align="end">{{input3.value.length}}/5</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-inputs-user">
+      <mat-label>Enter age</mat-label>
+      <input formControlName="age" matInput type="number" min="0" max="100" required class="example-right-align" placeholder="0">
+    </mat-form-field>
+    <mat-form-field class="form-inputs-user" hintLabel="Min 5 characters">
+      <mat-label>Enter address</mat-label>
+      <input formControlName="address" matInput #input4 minlength="5" placeholder="Address" required>
+      <mat-hint align="end">{{input4.value.length}}/5</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-inputs-user" hintLabel="Min 6 characters">
+      <mat-label>Enter phone number</mat-label>
+      <input formControlName="phone" matInput #input5 minlength="6" placeholder="1234-5678" required>
+      <mat-hint align="end">{{input5.value.length}}/6</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-inputs-user">
+      <mat-label>Select role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="ROLE_Admin">Admin</mat-option>
+        <mat-option value="ROLE_User">User</mat-option>
+        <mat-option value="ROLE_Viewer">Viewer</mat-option>
+      </mat-select>
+      <mat-hint align="end">Select a role for the user</mat-hint>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button type="button" mat-button mat-dialog-close>Close</button>
+    <button type="submit" [disabled]="!userForm.valid" mat-button>{{ data.isModify ? 'Modify User' : 'Add User' }}</button>
+  </div>
+</form>
+

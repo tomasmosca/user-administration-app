@@ -1,0 +1,56 @@
+<mat-card style="margin: 50px">
+  <mat-card-header>
+    <mat-card-title>Personal Information</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form *ngIf="profileForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-form-field hintLabel="Min 5 characters" class="form-inputs-user">
+          <mat-label>Enter username</mat-label>
+          <input formControlName="login" matInput #input minlength="5" placeholder="Ex. mike4523" readonly>
+          <mat-hint align="end">{{input.value.length}}/5</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-inputs-user">
+          <mat-label>Enter email</mat-label>
+          <input formControlName="email" matInput placeholder="pat@example.com" [formControl]="email">
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-inputs-user" style="width: 212px">
+          <mat-label>Enter password</mat-label>
+          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field class="form-inputs-user" hintLabel="Min 5 characters">
+          <mat-label>Enter ID</mat-label>
+          <input formControlName="identification" matInput #input1 minlength="5" placeholder="ID">
+          <mat-hint align="end">{{input1.value.length}}/5</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-inputs-user" hintLabel="Min 5 characters">
+          <mat-label>Enter name</mat-label>
+          <input formControlName="name" matInput #input2 minlength="5" placeholder="Name">
+          <mat-hint align="end">{{input2.value.length}}/5</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-inputs-user">
+          <mat-label>Enter age</mat-label>
+          <input formControlName="age" matInput type="number" min="0" max="100" class="example-right-align" placeholder="0">
+        </mat-form-field>
+        <mat-form-field class="form-inputs-user" hintLabel="Min 5 characters">
+          <mat-label>Enter address</mat-label>
+          <input formControlName="address" matInput #input3 minlength="5" placeholder="Address">
+          <mat-hint align="end">{{input3.value.length}}/5</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-inputs-user" hintLabel="Min 6 characters">
+          <mat-label>Enter phone number</mat-label>
+          <input formControlName="phone" matInput #input4 minlength="6" placeholder="1234-5678">
+          <mat-hint align="end">{{input4.value.length}}/6</mat-hint>
+        </mat-form-field>
+
+        <div>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.dirty || !profileForm.valid">Update</button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
