@@ -64,5 +64,10 @@ Before you clone the repo, ensure you have met the following requirements:
    ```
    The application will be available at http://localhost:4200/.
 
+## Credentials
 
-   
+An admin user will be created when the backend app runs. This user can be used to authenticate in the system and have admin privileges.
+   ```sh
+   username: admin
+   password: password
+   ```
